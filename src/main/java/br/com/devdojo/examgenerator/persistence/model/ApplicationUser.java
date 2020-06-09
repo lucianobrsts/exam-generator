@@ -9,7 +9,7 @@ import javax.validation.constraints.NotEmpty;
 public class ApplicationUser extends AbstractEntity{
     @NotEmpty(message = "The field username cannot be empty")
     @Column(unique = true)
-    private String Username;
+    private String username;
 
     @NotEmpty(message = "The field password cannot be empty")
     private String password;
@@ -17,12 +17,22 @@ public class ApplicationUser extends AbstractEntity{
     @OneToOne
     private Professor professor;
 
+    public ApplicationUser() {
+
+    }
+
+    public ApplicationUser(ApplicationUser applicationUser) {
+        username = applicationUser.username;
+        this.password = applicationUser.password;
+        this.professor = applicationUser.professor;
+    }
+
     public String getUsername() {
-        return Username;
+        return username;
     }
 
     public void setUsername(String username) {
-        Username = username;
+        this.username = username;
     }
 
     public String getPassword() {
