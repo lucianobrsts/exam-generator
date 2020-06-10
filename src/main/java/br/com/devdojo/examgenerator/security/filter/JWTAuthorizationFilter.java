@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -22,8 +21,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
     private final CustomUserDetailsService customUserDetailsService;
 
 
-    public JWTAuthorizationFilter(AuthenticationManager authenticationManager, AuthenticationEntryPoint authenticationEntryPoint, CustomUserDetailsService customUserDetailsService) {
-        super(authenticationManager, authenticationEntryPoint);
+    public JWTAuthorizationFilter(AuthenticationManager authenticationManager, CustomUserDetailsService customUserDetailsService) {
+        super(authenticationManager);
         this.customUserDetailsService = customUserDetailsService;
     }
 
